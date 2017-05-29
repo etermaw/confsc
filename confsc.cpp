@@ -58,19 +58,6 @@ std::vector<string_view> parse_value(string_view val, size_t line_num)
 	}
 }
 
-std::pair<string_view, std::vector<string_view>> parse_var(string_view line, size_t line_num)
-{
-	auto tokens = line.split<1>(' ');
-
-	for (auto& i : tokens)
-		i = i.trim_whitespaces();
-
-	if (tokens[1].length() == 0)
-		report_error("Missing value!", line_num);
-
-	return std::make_pair(tokens[0], parse_value(tokens[1], line_num));
-}
-
 void parse(string_view file, dict& values, std::unordered_map<string_view, dict>& named_objects)
 {
 	dict* data_holder = &values;
