@@ -4,7 +4,7 @@
 
 void report_error(const std::string& msg, size_t line_num)
 {
-	std::cout << "ERROR (line " << line_num << "): " << msg << "\n";
+	std::cerr << "ERROR (line " << line_num << "): " << msg << "\n";
 }
 
 bool is_valid_name(string_view s)

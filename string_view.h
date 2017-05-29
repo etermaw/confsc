@@ -3,6 +3,9 @@
 #include <array>
 #include <cassert>
 #include <stdlib.h>
+#include <cstring>
+#include <memory>
+#include <cmath>
 
 static constexpr size_t NOT_FOUND = -1;
 
@@ -59,6 +62,11 @@ class string_view
 		int to_int() const;
 		uint32_t to_uint() const;
 		float to_float() const;
+
+        friend std::ostream& operator<< (std::ostream& stream, const string_view& view) 
+        {
+            stream.write(view.begin(), view.length());
+        }
 };
 
 inline const char* string_view::begin() const
@@ -116,7 +124,7 @@ inline string_view string_view::trim(char c) const
 	return trim_front(c).trim_back(c);
 }
 
-string_view string_view::trim_whitespaces() const
+inline string_view string_view::trim_whitespaces() const
 {
 	size_t i = 0;
 	size_t j = 0;
@@ -199,7 +207,7 @@ inline size_t string_view::find(const char* c, size_t offset) const
 	return NOT_FOUND;
 }
 
-size_t string_view::rfind(char c, size_t offset) const
+inline size_t string_view::rfind(char c, size_t offset) const
 {
 	for (size_t i = len - offset - 1; i != static_cast<size_t>(-1); --i)
 		if (ptr[i] == c)
