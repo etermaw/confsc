@@ -1,0 +1,324 @@
+atlas_name sprites.png
+atlas_mask [255,0,255]
+normals_name sprites_normals.png
+normals_mask [0,0,0]
+
+#sprite [x,y,w,h]
+
+sprite{
+	player_c [0,0,40,24]   #player sprites
+	player_l [41,0,22,22]
+	player_r [64,0,22,22]
+
+	player_sc [0,24,40,24]  #shielded player sprites
+	player_sl [41,24,22,22]
+	player_sr [64,24,22,22]
+
+	flame1 [87,0,10,11]  #player flames (frames)
+	flame2 [98,0,10,8]
+	flame3 [109,0,10,5]
+	flame4 [120,0,10,8]
+
+	bullet [130,13,5,10]
+	light_rocket [103,13,6,10]
+	heavy_rocket [87,13,15,13]
+
+	scout	     [113,30,41,24]
+	heavy_scout  [136,0,42,29]
+	mg_unit		 [472,17,38,33]
+	prec_unit    [219,0,30,27]
+	bomber       [434,16,37,37]
+	heavy_bomber [179,0,39,39]
+	grenader	 [219,28,31,29]
+	swarmer		 [417,17,15,35]
+	thurster	 [395,22,19,26]
+
+	f1 [255,5,16,16] #explosion frames
+	f2 [281,1,24,22]
+	f3 [307,0,26,23]
+	f4 [335,4,21,22]
+	f5 [365,4,18,17]
+
+	bg1 [0,60,440,480] #backgrounds
+	bg2 [0,540,439,480]
+
+	bar [462,58,16,148]
+	icon_bg [480,121,32,32] #background for icon
+	shield_icon [484,156,21,21]
+	energy_bar_color [489,164,1,1]
+
+	web1 [465,55,1,1] #colors for weapon energy bar
+	web2 [466,55,1,1]
+	web3 [467,55,1,1]
+	web4 [468,55,1,1]
+
+	a [453,210,28,34] #'a'
+	b [481,210,28,34] #'b'
+	c [452,245,28,34] #'c'
+	d [481,245,28,34] #'d'
+	e [466,280,21,34] #'e'
+	f [487,280,21,34] #'f'
+	g [454,315,28,34] #'g'
+	h [483,315,28,34] #'h'
+	i [463,351,7,34] #'i'
+	j [471,351,28,34] #'j'
+	k [456,386,28,34] #'k'
+	l [486,386,21,34] #'l'
+	m [446,423,34,34] #'m'
+	n [481,423,28,34] #'n'
+	o [454,459,28,34] #'o'
+	p [483,459,28,34] #'p'
+	q [455,494,28,34] #'q'
+	r [484,494,28,34] #'r'
+	s [448,530,28,34] #'s'
+	t [477,530,35,34] #'t'
+	u [446,567,28,34] #'u'
+	v [476,567,34,34] #'v'
+	w [447,602,34,34] #'w'
+	x [482,602,28,34] #'x'
+	y [454,640,28,34] #'y'
+	z [483,640,28,34] #'z'
+
+	dig0 [483,817,28,34] #0
+	dig1 [454,675,21,34] #1
+	dig2 [476,675,28,34] #2
+	dig3 [454,712,28,34] #3
+	dig4 [483,712,28,34] #4
+	dig5 [454,747,28,34] #5
+	dig6 [483,747,28,34] #6
+	dig7 [454,782,28,34] #7
+	dig8 [483,782,28,34] #8
+	dig9 [454,817,28,34] #9
+
+	e_lr [169,31,6,10] #enemy light rocket
+	e_hr [156,43,15,13] #enemy heavy rocket
+	e_fg [174,44,6,9] #enemy frag grenade
+	e_sr [156,31,12,11] #enemy swarm rocket
+
+	es1 [259,31,12,17] #energy symbols
+	es2 [272,31,12,17] 
+	es3 [285,31,12,17]
+	es4 [298,31,12,17]
+
+	lr_icon [480,59,14,23] #light rocket icon
+	hg_icon [491,99,16,21] #heavy rocket icon
+	fg_icon [480,82,14,18] #frag grenade icon
+	sr_icon [479,101,10,16] #swarm rocket icon
+	power_up_icon [315,28,24,24] #power up icon, ugly, very ugly
+}
+
+scout{
+	system 0
+	count 30
+	pattern 5
+	pipe 0
+	sprite 13
+	aabb [11,11,8,10] #[top,left,bottom,right]
+	hp 150
+	wait 50
+	shoot 1
+	shoot_freq 1
+	light_color [255,0,0] #[r,g,b] 
+	light_pos [0,7] #[x,y]
+}
+
+heavy_scout{
+	system 0
+	count 30
+	pattern 6
+	pipe 1
+	sprite 14
+	aabb [13,8,13,8] 
+	light_color [6,188,249]
+	light_pos [0,-13]
+	hp 300
+	wait 45
+	shoot 1
+	shoot_freq 1
+}
+
+mg_unit{
+	system 0
+	count 30
+	pattern RANDOM 30
+	pipe 0
+	sprite 15
+	aabb [13,8,13,8] 
+	light_color [0,0,255] 
+	light_pos [0,0]
+	hp 600
+	wait 35
+	shoot 20
+	shoot_freq 1
+}
+
+prec_unit{
+	system 0
+	count 30
+	pattern HOMING
+	pipe 0
+	sprite 16
+	aabb [13,8,13,8] 
+	light_color [6,188,249] 
+	light_pos [0,0]
+	hp 450
+	wait 30
+	shoot 20
+	shoot_freq 2
+}
+
+bomber{
+	system 0
+	count 30
+	pattern 10
+	pipe 1
+	sprite 17
+	aabb [16,10,17,10] 
+	light_color [0,150,255] 
+	light_pos [0,-18]
+	hp 800
+	wait 45
+	shoot 1
+	shoot_freq 1
+}
+
+heavy_bomber{
+	system 0
+	count 30
+	pattern 6
+	pipe 2
+	sprite 18
+	aabb [20,10,20,10] 
+	light_color [255,126,0] 
+	light_pos [0,-16]
+	hp 1000
+	wait 45
+	shoot 10
+	shoot_freq 1
+}
+
+grenader{
+	system 0
+	count 30
+	pattern 6
+	pipe 3
+	sprite 64
+	aabb [15,16,8,16]
+	light_color [255,127,0] 
+	light_pos [0,15]
+	hp 600
+	wait 80
+	shoot 1
+	shoot_freq 1
+	#start_func start_enemy
+	#update_func update_enemy
+}
+
+#change it, in current form it`s useless
+swarmer{
+	system 0
+	count 30
+	pattern 7
+	pipe 4
+	sprite 65
+	aabb [1,1,1,1]
+	light_color [255,0,0] 
+	light_pos [0,9]
+	hp 200
+	wait 30
+	shoot 10
+	shoot_freq 1
+}
+
+thurster{
+	system 0
+	count 30
+	pattern HOMING_RANDOM 15
+	pipe 0
+	sprite 66
+	aabb [10,13,10,13]
+	light_color [0,255,0] 
+	light_pos [0,0]
+	hp 70
+	wait 40
+	shoot 25
+	shoot_freq 1
+}
+
+player_bullet{
+	system 1
+	count 300
+	light_color [0,150,255]
+	aabb [5,3,5,3]
+	sprite 10
+	angle +90
+	speed 5
+	damage 40
+}
+
+player_light_rocket{
+	system 1
+	count 100
+	light_color [253,202,14]
+	aabb [4,3,6,3]
+	sprite 11
+	angle +90
+	speed 5
+	damage 400
+}
+
+player_heavy_rocket{
+	system 1
+	count 100
+	light_color [253,202,14]
+	aabb [8,8,6,7]
+	sprite 12
+	speed 5
+	damage 850
+}
+
+enemy_bullet{
+	system 2
+	count 1000
+	light_color [0,150,255]
+	aabb [5,3,5,3]
+	sprite 10
+	angle +90
+	speed 5
+	damage 75
+	dmg_absorb 1
+}
+
+enemy_light_rocket{
+	system 2
+	count 300
+	light_color [253,202,14]
+	sprite 60
+	angle +270
+	aabb [4,3,6,3]
+	speed 5
+	damage 150
+	dmg_absorb 0.75
+}
+
+enemy_heavy_rocket{
+	system 2
+	count 100
+	light_color [253,202,14]
+	sprite 61
+	aabb [8,8,6,7]
+	speed 5
+	damage 300
+	dmg_absorb 0.5
+}
+
+enemy_frag_grenade{
+	system 2
+	count 100
+	light_color [34,177,76]
+	sprite 62
+	aabb [3,5,3,5]
+	speed 8
+	damage 200
+	dmg_absorb 0.65
+}
