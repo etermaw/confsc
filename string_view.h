@@ -66,6 +66,7 @@ class string_view
         friend std::ostream& operator<< (std::ostream& stream, const string_view& view) 
         {
             stream.write(view.begin(), view.length());
+            return stream;
         }
 };
 
